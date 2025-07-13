@@ -56,7 +56,7 @@
           "value": "1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU",
           "mode": "list",
           "cachedResultName": "จดรายรับรายจ่าย",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU/edit?usp=drivesdk"
+          "cachedResultUrl": "x"
         },
         "sheetName": {
           "__rl": true,
@@ -194,10 +194,10 @@
         "operation": "create",
         "documentId": {
           "__rl": true,
-          "value": "1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU",
+          "value": "x",
           "mode": "list",
           "cachedResultName": "จดรายรับรายจ่าย",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU/edit?usp=drivesdk"
+          "cachedResultUrl": "x"
         },
         "title": "=เดือน {{ $json.DateTime['เดือน'] }} ปี {{ $json.DateTime['ปี'] }}",
         "options": {}
@@ -411,10 +411,10 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU",
+          "value": "x",
           "mode": "list",
           "cachedResultName": "จดรายรับรายจ่าย",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU/edit?usp=drivesdk"
+          "cachedResultUrl": "x"
         },
         "sheetName": {
           "__rl": true,
@@ -532,7 +532,7 @@
           "value": "1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU",
           "mode": "list",
           "cachedResultName": "จดรายรับรายจ่าย",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU/edit?usp=drivesdk"
+          "cachedResultUrl": "x"
         },
         "sheetName": {
           "__rl": true,
@@ -1099,7 +1099,7 @@
   "versionId": "91ffcaa5-0800-4cde-8a1d-d476fb8cb7df",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "f3cf9cfed9b17909a3297a2955968e34d1145452bf251106868abafafb9ca9b4"
+    "instanceId": "x"
   },
   "id": "Hdj977e6L7c6LcON",
   "tags": []
