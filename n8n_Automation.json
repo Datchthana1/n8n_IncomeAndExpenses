@@ -1,0 +1,1053 @@
+{
+  "name": "รายรับรายจ่าย",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ab56c129-af6b-4d3d-bd28-b223464f9e79",
+              "name": "ID",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "75d5d3d9-e50b-4d8e-9155-869cd71d0ef5",
+              "name": "DateTime",
+              "value": "={{ $json.headers.date }}",
+              "type": "string"
+            },
+            {
+              "id": "c72838d6-b0f1-4444-a276-b747c407ffcb",
+              "name": "FromEmail",
+              "value": "={{ $json.headers.from }}",
+              "type": "string"
+            },
+            {
+              "id": "cf6e0a27-dd73-4958-b6b4-492e2285b572",
+              "name": "ToEmail",
+              "value": "={{ $json.headers.to }}",
+              "type": "string"
+            },
+            {
+              "id": "49be1ff3-03cd-4cd0-aa99-1a8cce58123e",
+              "name": "Text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-1020, -105],
+      "id": "6b3d4f0c-917e-4381-92f8-2d15f3a51063",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU",
+          "mode": "list",
+          "cachedResultName": "จดรายรับรายจ่าย",
+          "cachedResultUrl": "x"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $json.result['ปี'] }}/{{ $json.result['เดือน'] }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $json.ID }}",
+            "Bank": "={{ $json.Bank }}",
+            "DateTime": "={{ $json.DateTime }}",
+            "FromEmail": "={{ $json.FromEmail }}",
+            "ToEmail": "={{ $json.ToEmail }}",
+            "recipient_name": "={{ $json.extract_date_from_text['ชื่อผู้รับเงิน'] }}",
+            "amount_baht": "={{ $json.extract_date_from_text['จำนวนเงิน'] }}",
+            "fee_baht": "={{ $json.extract_date_from_text['ค่าธรรมเนียม'] }}",
+            "avaiable_balance": "={{ $json.extract_date_from_text['ยอดคงเหลือ'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Bank",
+              "displayName": "Bank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "DateTime",
+              "displayName": "DateTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FromEmail",
+              "displayName": "FromEmail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ToEmail",
+              "displayName": "ToEmail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recipient_name",
+              "displayName": "recipient_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "amount_baht",
+              "displayName": "amount_baht",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fee_baht",
+              "displayName": "fee_baht",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "avaiable_balance",
+              "displayName": "avaiable_balance",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sammary",
+              "displayName": "Sammary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [220, -120],
+      "id": "4572570e-9ec3-489b-ba35-5f6e436b8999",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "wDowJ1a73Zqv8sS4",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "documentId": {
+          "__rl": true,
+          "value": "1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU",
+          "mode": "list",
+          "cachedResultName": "จดรายรับรายจ่าย",
+          "cachedResultUrl": "x"
+        },
+        "title": "=เดือน {{ $json.DateTime['เดือน'] }} ปี {{ $json.DateTime['ปี'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [240, 180],
+      "id": "94aca6de-500a-448f-b29a-ceef30580d1d",
+      "name": "Create sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "wDowJ1a73Zqv8sS4",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8c9d4aba-60fe-4b6b-b71b-92623fc6d58f",
+              "leftValue": "={{ $json.result['ปี'] }}-{{ $json.result['เดือน'] }}",
+              "rightValue": "={{ $json.result['ปี'] }}-{{ $json.result['เดือน'] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [-40, -100],
+      "id": "7cbc0cb6-9051-4a62-8227-70ab17e70d6f",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [-280, -100],
+      "id": "797b9a5f-a387-4ed1-8f23-a9f4db7b3d66",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ใน n8n ให้ใส่โค้ดนี้ใน Code Node หรือ Function Node\n// สมมติว่าสตริง DateTime อยู่ใน input item ตัวแรก ภายใต้ field 'dateTimeString'\n// เช่น {{ $json.dateTimeString }} หรือ {{ $('node_name').item.json.dateTimeString }}\n\nconst inputDateTimeString = $now; // สตริง DateTime ที่คุณต้องการแยก\n\nconst results = {};\n\nif (inputDateTimeString) {\n    try {\n        // สร้าง Date object จากสตริง\n        // JavaScript สามารถ Parse สตริงรูปแบบ ISO 8601 นี้ได้โดยตรง\n        const dateObj = new Date(inputDateTimeString);\n\n        // ตรวจสอบว่า Date object สร้างได้อย่างถูกต้อง\n        if (!isNaN(dateObj.getTime())) { // true ถ้า Date object ถูกต้อง\n            results['เดือน'] = dateObj.getMonth() + 1; // getMonth() ให้ค่า 0-11 ดังนั้นต้อง +1\n            results['ปี'] = dateObj.getFullYear();     // ได้ปีเต็ม (YYYY)\n        } else {\n            results['Error'] = \"Invalid Date string provided.\";\n        }\n    } catch (e) {\n        results['Error'] = \"Failed to parse date string: \" + e.message;\n    }\n} else {\n    results['Error'] = \"No DateTime string provided in input.\";\n}\n\n// n8n คาดหวังให้เรา return array ของ objects\nreturn [{ json: {\n  result: results\n} }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-680, 40],
+      "id": "8dd25270-399f-4d1b-89e7-3ca625c89f2f",
+      "name": "Reformat_DateTime"
+    },
+    {
+      "parameters": {
+        "content": "## อันนี้สำหรับการแจ้งเตือนของธนาคารกสิกรไทย\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
+        "height": 340,
+        "width": 1840,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-1490, -245],
+      "id": "969a4689-8952-44a0-91ac-752b43283a30",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ab56c129-af6b-4d3d-bd28-b223464f9e79",
+              "name": "ID",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "75d5d3d9-e50b-4d8e-9155-869cd71d0ef5",
+              "name": "DateTime",
+              "value": "={{ $json.headers.date }}",
+              "type": "string"
+            },
+            {
+              "id": "c72838d6-b0f1-4444-a276-b747c407ffcb",
+              "name": "FromEmail",
+              "value": "={{ $json.headers.from }}",
+              "type": "string"
+            },
+            {
+              "id": "cf6e0a27-dd73-4958-b6b4-492e2285b572",
+              "name": "ToEmail",
+              "value": "={{ $json.headers.to }}",
+              "type": "string"
+            },
+            {
+              "id": "49be1ff3-03cd-4cd0-aa99-1a8cce58123e",
+              "name": "Text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-1020, 160],
+      "id": "afd591cf-8d90-4082-beee-29279bf835cb",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [-280, 160],
+      "id": "369e6f1d-b12c-45e9-adae-cbe37429a115",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8c9d4aba-60fe-4b6b-b71b-92623fc6d58f",
+              "leftValue": "={{ $json.result['ปี'] }}-{{ $json.result['เดือน'] }}",
+              "rightValue": "={{ $json.result['ปี'] }}-{{ $json.result['เดือน'] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [-40, 160],
+      "id": "e1efa34d-815c-4161-9607-3ddcef8fb136",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "content": "## อันนี้สำหรับการแจ้งเตือนของธนาคารกรุงเทย\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
+        "height": 300,
+        "width": 1840,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-1480, 100],
+      "id": "bf994179-5226-4d1b-915c-995e30ff026e",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU",
+          "mode": "list",
+          "cachedResultName": "จดรายรับรายจ่าย",
+          "cachedResultUrl": "x"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $json.result['ปี'] }}/{{ $json.result['เดือน'] }}",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [-1020, 480],
+      "id": "1bda4423-0d9f-4fb8-93cd-a10e168dc7bc",
+      "name": "Get row(s) in sheet",
+      "alwaysOutputData": true,
+      "retryOnFail": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "wDowJ1a73Zqv8sS4",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=โอนยอดเงินเข้าบัญชีไปเท่าไหร่ ในเมื่อโอนจาก\n/ธนาคารอะไร จาก Schema นี้\n\nวันเวลา: {{ $json.DateTime }}\nจำนวนเงิน: {{ $json.amount_baht }}\nจากธนาคาร: {{ $json.Bank }}\n\nโดยสรุปจำนวนรายเดือน แต่สรุปแยกธนาคาร ว่าแต่ละธนาคารยอดโอนเงินเป็นเท่าไหร่\n\nหากไม่ได้รับข้อมูลให้แสดงออกคำว่า ไม่ได้รับ",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [-440, 480],
+      "id": "7ecdca2b-2a0a-4b6e-9533-d23b17df901d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-lite-001",
+        "options": {
+          "maxOutputTokens": 1024
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [-640, 600],
+      "id": "927a1f4a-8e45-4648-bd3b-3ce9bac59d49",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Qx18e92l6i8s3czv",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "Bank"
+            },
+            {
+              "fieldToAggregate": "amount_baht"
+            },
+            {
+              "fieldToAggregate": "DateTime"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [-800, 480],
+      "id": "f5f4c809-cc06-47ce-8372-cf1cf7f4024e",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1AyYV7wWaVipQDeqV6dQx5bQj7gGa65lqNCKRH5G2IyU",
+          "mode": "list",
+          "cachedResultName": "จดรายรับรายจ่าย",
+          "cachedResultUrl": "x"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $('Reformat_DateTime1').item.json.result['ปี'] }}/{{ $('Reformat_DateTime1').item.json.result['เดือน'] }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "DateTime": "={{ $('Reformat_DateTime1').item.json.result['ปี'] }}/{{ $('Reformat_DateTime1').item.json.result['เดือน'] }}",
+            "Sammary": "={{ $json.output }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Bank",
+              "displayName": "Bank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "DateTime",
+              "displayName": "DateTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FromEmail",
+              "displayName": "FromEmail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ToEmail",
+              "displayName": "ToEmail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recipient_name",
+              "displayName": "recipient_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "amount_baht",
+              "displayName": "amount_baht",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fee_baht",
+              "displayName": "fee_baht",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "avaiable_balance",
+              "displayName": "avaiable_balance",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sammary",
+              "displayName": "Sammary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [-20, 480],
+      "id": "f23f1fbd-4cc5-45e9-af88-bffca2a795ad",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "wDowJ1a73Zqv8sS4",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## สำหรับการสรุปผลในแต่ละเดือน\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
+        "height": 340,
+        "width": 1840,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-1480, 400],
+      "id": "21251833-e90b-47ed-8194-953cdc65f233",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "simple": false,
+        "filters": {
+          "receivedAfter": "={{ DateTime.now().minus({ days: 1 }).toFormat('yyyy-MM-dd 00:00:00') }}",
+          "sender": "KPLUS@kasikornbank.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [-1240, -105],
+      "id": "8f160d8c-33ab-4cc8-b10f-99bbe9921f85",
+      "name": "Get many messages",
+      "webhookId": "a5a54a0d-6f96-47f8-80bb-bc5f3d40c582",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "IXVhTcoOSusQ5uxx",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "simple": false,
+        "filters": {
+          "receivedAfter": "={{ DateTime.now().minus({ days: 1 }).toFormat('yyyy-MM-dd 00:00:00') }}",
+          "sender": "noreply@krungthai.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [-1240, 160],
+      "id": "403a97f1-e2c2-4fa3-af4f-9319ac0a78e7",
+      "name": "Get many messages1",
+      "webhookId": "a5a54a0d-6f96-47f8-80bb-bc5f3d40c582",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "IXVhTcoOSusQ5uxx",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ใน n8n ให้ใส่โค้ดนี้ใน Code Node หรือ Function Node\n// สมมติว่าสตริง DateTime อยู่ใน input item ตัวแรก ภายใต้ field 'dateTimeString'\n// เช่น {{ $json.dateTimeString }} หรือ {{ $('node_name').item.json.dateTimeString }}\n\nconst inputDateTimeString = $now; // สตริง DateTime ที่คุณต้องการแยก\n\nconst results = {};\n\nif (inputDateTimeString) {\n    try {\n        // สร้าง Date object จากสตริง\n        // JavaScript สามารถ Parse สตริงรูปแบบ ISO 8601 นี้ได้โดยตรง\n        const dateObj = new Date(inputDateTimeString);\n\n        // ตรวจสอบว่า Date object สร้างได้อย่างถูกต้อง\n        if (!isNaN(dateObj.getTime())) { // true ถ้า Date object ถูกต้อง\n            results['เดือน'] = dateObj.getMonth() + 1; // getMonth() ให้ค่า 0-11 ดังนั้นต้อง +1\n            results['ปี'] = dateObj.getFullYear();     // ได้ปีเต็ม (YYYY)\n        } else {\n            results['Error'] = \"Invalid Date string provided.\";\n        }\n    } catch (e) {\n        results['Error'] = \"Failed to parse date string: \" + e.message;\n    }\n} else {\n    results['Error'] = \"No DateTime string provided in input.\";\n}\n\n// n8n คาดหวังให้เรา return array ของ objects\nreturn [{ json: {\n  result: results\n} }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-1240, 480],
+      "id": "6a4714ac-b3bb-4e54-97ae-b63bb0b01a7f",
+      "name": "Reformat_DateTime1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// รับ input ทั้งหมด\nconst items = $input.all();\n\nreturn items.map(item => {\n  const smsText = item.json.Text;\n  const results = {};\n\n  // 1. เบอร์โทรศัพท์\n  const phoneMatch = smsText.match(/โทรศัพท์มือถือหมายเลข (\\d{2}-\\d{4}-\\d{4})/);\n  if (phoneMatch) {\n    results['เบอร์โทรศัพท์'] = phoneMatch[1];\n  }\n\n  // 2. ชื่อผู้รับเงิน\n  const nameMatch = smsText.match(/ชื่อผู้รับเงิน:\\s*(.+)/);\n  if (nameMatch) {\n    results['ชื่อผู้รับเงิน'] = nameMatch[1].trim();\n  }\n\n  // 3. จำนวนเงิน\n  const amountMatch = smsText.match(/จำนวนเงิน \\(บาท\\):\\s*([\\d,\\.]+)/);\n  if (amountMatch) {\n    results['จำนวนเงิน'] = parseFloat(amountMatch[1].replace(/,/g, ''));\n  }\n\n  // 4. ค่าธรรมเนียม\n  const feeMatch = smsText.match(/ค่าธรรมเนียม \\(บาท\\):\\s*([\\d,\\.]+)/);\n  if (feeMatch) {\n    results['ค่าธรรมเนียม'] = parseFloat(feeMatch[1].replace(/,/g, ''));\n  }\n\n  // 5. ยอดถอนได้ (ยอดคงเหลือ)\n  const balanceMatch = smsText.match(/ยอดถอนได้ \\(บาท\\):\\s*([\\d,\\.]+)/);\n  if (balanceMatch) {\n    results['ยอดคงเหลือ'] = parseFloat(balanceMatch[1].replace(/,/g, ''));\n  }\n\n  return {\n    json: {\n      ID: item.json.ID,\n      Bank: \"K+\",\n      DateTime: item.json.DateTime,\n      FromEmail: item.json.FromEmail,\n      ToEmail: item.json.ToEmail,\n      extract_date_from_text: results,\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-800, -180],
+      "id": "2351587f-2717-4b59-a76b-ae4a74bcc060",
+      "name": "แยกราละเอียดจาก Text"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst results = [];\n\nconsole.log(`Total items to process: ${items.length}`);\n\nfor (const item of items) {\n  console.log(`Processing item ID: ${item.json.ID}`);\n\n  const inputDateTimeString = item.json.DateTime || \"\";\n  const output = {};\n  let rawDateTimePart = null;\n\n  // ดึง datetime จาก DateTime field (ลบ \"Date: \" ถ้ามี)\n  if (typeof inputDateTimeString === 'string' && inputDateTimeString.trim() !== '') {\n    rawDateTimePart = inputDateTimeString.replace(/^Date:\\s*/, '').replace(/\\s*\\(.*\\)$/, '');\n  }\n\n  if (rawDateTimePart) {\n    let dateObj;\n    try {\n      dateObj = new Date(rawDateTimePart);\n      if (isNaN(dateObj.getTime())) {\n        dateObj = null;\n      }\n    } catch (e) {\n      dateObj = null;\n    }\n\n    if (dateObj) {\n      output['วันที่'] = dateObj.getDate();\n      output['เดือน'] = dateObj.getMonth() + 1;\n      output['ปี'] = dateObj.getFullYear();\n      const hours = String(dateObj.getHours()).padStart(2, '0');\n      const minutes = String(dateObj.getMinutes()).padStart(2, '0');\n      const seconds = String(dateObj.getSeconds()).padStart(2, '0');\n      output['เวลา'] = `${hours}:${minutes}:${seconds}`;\n      output['DateTime_RawString'] = rawDateTimePart;\n    } else {\n      output['DateTime_Error'] = \"Could not parse DateTime: \" + rawDateTimePart;\n    }\n  } else {\n    output['DateTime_Error'] = \"DateTime string is empty or invalid: \" + inputDateTimeString;\n  }\n\n  // ดึงข้อมูลจาก Text โดยใช้ RegExp\n  const text = item.json.Text || \"\";\n\n  // ดึงชื่อผู้รับเงิน (ในตัวอย่าง จะเป็น \"จากบัญชี : นาย เดชธนา อรัญชัยยะ\")\n  let recipientName = null;\n  const recipientMatch = text.match(/ไปยังบัญชี\\s*:\\s*(.+)/);\n  if (recipientMatch) {\n    recipientName = recipientMatch[1].trim();\n  } else {\n    // fallback ดึงชื่อผู้ส่งแทน (จากบัญชี)\n    const senderMatch = text.match(/จากบัญชี\\s*:\\s*(.+)/);\n    if (senderMatch) {\n      recipientName = senderMatch[1].trim();\n    }\n  }\n\n  // ดึงจำนวนเงิน (เลขจำนวนเต็มหรือทศนิยม)\n  let amount = null;\n  const amountMatch = text.match(/จำนวนเงิน\\s*:\\s*([\\d,.]+)\\s*บาท/);\n  if (amountMatch) {\n    amount = parseFloat(amountMatch[1].replace(/,/g, ''));\n  }\n\n  // ดึงค่าธรรมเนียม\n  let fee = null;\n  const feeMatch = text.match(/ค่าธรรมเนียม\\s*:\\s*([\\d,.]+)\\s*บาท/);\n  if (feeMatch) {\n    fee = parseFloat(feeMatch[1].replace(/,/g, ''));\n  }\n\n  // ดึงยอดคงเหลือ (ไม่มีในตัวอย่างข้อมูล ถ้ามีใน Text ให้เพิ่ม RegExp ดึงตรงนี้)\n  const balance = null;\n\n  // รวมข้อมูล extract_date_from_text\n  const extract_date_from_text = {\n    \"ชื่อผู้รับเงิน\": recipientName,\n    \"จำนวนเงิน\": amount,\n    \"ค่าธรรมเนียม\": fee,\n    \"ยอดคงเหลือ\": balance\n  };\n\n  results.push({\n    json: {\n      ID: item.json.ID,\n      Bank: item.json.Bank || \"Krungthai NEXT\",\n      DateTime: inputDateTimeString,\n      FromEmail: item.json.FromEmail,\n      ToEmail: item.json.ToEmail,\n      extract_date_from_text: extract_date_from_text,\n      parsedDateTime: output\n    }\n  });\n}\n\nreturn results;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-800, 240],
+      "id": "7573ce29-d2b2-4d60-b67c-8e6338e1c439",
+      "name": "แยกราละเอียดจาก Text1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "566b7d3f-be88-4226-9a87-e46bc5c3e7db",
+              "leftValue": "={{ $json.extract_date_from_text['จำนวนเงิน'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [-580, 240],
+      "id": "76fbf48c-204c-4819-ac8e-05f8210d857f",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "62579ad9-07dd-4ecc-9545-eeb7b9cd484a",
+              "leftValue": "={{ $json.extract_date_from_text['ชื่อผู้รับเงิน'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [-580, -180],
+      "id": "cd16701d-6751-4de3-8237-f4957983b573",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 0 1 31 * * "
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-1840, 320],
+      "id": "83e17d42-3d53-48ff-ba09-6873a29eec64",
+      "name": "Schedule_31",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 0,
+              "triggerAtMinute": 5
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-1840, 0],
+      "id": "fe3208f1-f69c-4dc0-9fdc-2375b67b94d4",
+      "name": "Schedule_MidNight",
+      "notesInFlow": false
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "แยกราละเอียดจาก Text",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Reformat_DateTime",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create sheet": {
+      "main": [[]]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reformat_DateTime": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "แยกราละเอียดจาก Text1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Reformat_DateTime",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many messages1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many messages": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reformat_DateTime1": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "แยกราละเอียดจาก Text": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "แยกราละเอียดจาก Text1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule_31": {
+      "main": [
+        [
+          {
+            "node": "Reformat_DateTime1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule_MidNight": {
+      "main": [
+        [
+          {
+            "node": "Get many messages",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get many messages1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Bangkok",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "bec9929f-7780-43a2-9dd3-a788ad20af6e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f3cf9cfed9b17909a3297a2955968e34d1145452bf251106868abafafb9ca9b4"
+  },
+  "id": "Hdj977e6L7c6LcON",
+  "tags": []
+}
